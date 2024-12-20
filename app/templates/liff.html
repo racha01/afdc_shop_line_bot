@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <title>LINE LIFF</title>
+</head>
+<body>
+    <h1>LINE LIFF Example</h1>
+    <button id="getProfile">Get Profile</button>
+    <script>
+        liff.init({ liffId: "2006696301-obw1QL4P" }).then(() => {
+            console.log("LIFF initialized");
+            console.log(liff)
+
+            document.getElementById("getProfile").addEventListener("click", () => {
+                console.log("click")
+                console.log(liff.getProfile())
+                liff.getProfile().then(profile => {
+                    const userProfile = {
+                        userId: profile.userId,
+                        displayName: profile.displayName,
+                        pictureUrl: profile.pictureUrl,
+                        statusMessage: profile.statusMessage
+                    };
+
+                    console.log("gg")
+
+                    fetch('/callback-permision', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(userProfile),
+                    })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error(error));
+                });
+            });
+        }).catch(err => console.error(err));
+    </script>
+</body>
+</html>

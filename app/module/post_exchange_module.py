@@ -43,4 +43,29 @@ class PostExchange():
         return f'รายงานยอด px\nประจำวันที่ {gg[0].date}\nยอด {gg[0].amount} บาท'
 
     def create_user_post_exchange(self):
+        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+    
+        spreadsheet_id = "1Q3w-UW3jlXMKMgNaFjdrLVV2PPAuWf-DJ9dZjxuX81A"
+        range_name = "users!A4:C6"
+        value_input_option = "USER_ENTERED"
+        
+        service = build("sheets", "v4", credentials=creds)
+        sheet = service.spreadsheets()
+        values = [
+            ["Name", "Age", "City"],
+            ["John", 30, "New York"],
+            ["Jane", 25, "Los Angeles"],
+        ]
+
+        body = {"values": values}
+        result = (
+            service.spreadsheets()
+            .values()
+            .update(
+                spreadsheetId=spreadsheet_id,
+                range=range_name,
+                valueInputOption=value_input_option,
+                body=body,
+            ).execute()
+        )
         return f"create user post exchange"
