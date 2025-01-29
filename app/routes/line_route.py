@@ -143,7 +143,7 @@ def handle_message(event):
                 line_bot_api.reply_message_with_http_info(
                     ReplyMessageRequest(
                         reply_token=event.reply_token,
-                        messages=[TextMessage(text='https://line-bot1.racha.infy.uk/login')]
+                        messages=[TextMessage(text='https://web/login')]
                     )
                 )
             else:
