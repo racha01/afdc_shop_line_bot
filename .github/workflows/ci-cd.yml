@@ -22,16 +22,18 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy to Ubuntu Server
-        run: |
-          ssh -i "key.pem" ubuntu@ec2-3-104-64-155.ap-southeast-2.compute.amazonaws.com << EOF
-            echo "Connected to the Ubuntu server";
-            # Add deployment commands here, e.g.,
-            cd /projects/afdc_shop_line_bot
-            git pull origin main  
-            sudo sudo docker build -t flask-line-bot .
-            sudo sudo docker run -p 5000:5000 flask-line-bot
-          EOF
+      - name: Deploy to EC2 Instance
+      run: |
+        # Disable strict host key checking to avoid host key verification failure
+        mkdir -p ~/.ssh
+        touch ~/.ssh/known_hosts
+        ssh-keyscan -H ec2-3-104-64-155.ap-southeast-2.compute.amazonaws.com >> ~/.ssh/known_hosts
+        
+        # SSH into EC2 instance
+        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ubuntu@ec2-3-104-64-155.ap-southeast-2.compute.amazonaws.com << EOF
+          echo "Connected to the EC2 instance!";
+          # Add deployment commands here
+        EOF
 
       # - name: Deploy to Ubuntu Server
       #   uses: appleboy/ssh-action@v0.1.5
