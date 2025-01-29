@@ -44,7 +44,6 @@ def login():
         f"&redirect_uri={LINE_REDIRECT_URI}"
         f"&state=random_state&scope=profile%20openid"
     )
-    print(login_url)
     return redirect(login_url)
 
 @line_route_bp.route("/callback", methods=['POST'])
