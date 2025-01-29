@@ -18,8 +18,8 @@ jobs:
           python-version: '3.9'
 
       - name: Set up SSH agent
-      uses: webfactory/ssh-agent@v0.7.0
-      with:
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
           - name: Deploy to Ubuntu Server
