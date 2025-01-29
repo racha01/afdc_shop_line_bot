@@ -23,17 +23,17 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy to EC2 Instance
-      run: |
-        # Disable strict host key checking to avoid host key verification failure
-        mkdir -p ~/.ssh
-        touch ~/.ssh/known_hosts
-        ssh-keyscan -H ec2-3-104-64-155.ap-southeast-2.compute.amazonaws.com >> ~/.ssh/known_hosts
+        run: |
+          # Disable strict host key checking to avoid host key verification failure
+          mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts
+          ssh-keyscan -H ec2-3-104-64-155.ap-southeast-2.compute.amazonaws.com >> ~/.ssh/known_hosts
         
-        # SSH into EC2 instance
-        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ubuntu@ec2-3-104-64-155.ap-southeast-2.compute.amazonaws.com << EOF
-          echo "Connected to the EC2 instance!";
-          # Add deployment commands here
-        EOF
+          # SSH into EC2 instance
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ubuntu@ec2-3-104-64-155.ap-southeast-2.compute.amazonaws.com << EOF
+            echo "Connected to the EC2 instance!";
+            # Add deployment commands here
+          EOF
 
       # - name: Deploy to Ubuntu Server
       #   uses: appleboy/ssh-action@v0.1.5
