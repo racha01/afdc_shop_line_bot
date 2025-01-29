@@ -24,6 +24,7 @@ jobs:
 
       - name: Deploy to Ubuntu Server
         run: |
+          chmod 400 "key.pem"
           ssh -i "key.pem" ubuntu@ec2-3-104-64-155.ap-southeast-2.compute.amazonaws.com << EOF
             echo "Connected to the Ubuntu server";
             # Add deployment commands here, e.g.,
