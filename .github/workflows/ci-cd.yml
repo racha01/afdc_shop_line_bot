@@ -34,7 +34,7 @@ jobs:
             echo "Connected to the EC2 instance!";
             cd projects/afdc_shop_line_bot
             git pull origin main
-            sudo docker build -t flask-app . 
+            sudo docker build -t flask-line-bot . 
             sudo docker stop flask-line-bot
             sudo docker rm flask-line-bot
             sudo docker run --name flask-line-bot -p 5000:5000 flask-line-bot
