@@ -30,7 +30,7 @@ configuration = Configuration(access_token=app.config['ACCESS_TOKEN'])
 
 LINE_CLIENT_ID = "2006696301"
 LINE_CLIENT_SECRET = "3e56786ceb2cbfb2c1f7bb581d314802"
-LINE_REDIRECT_URI = "https://4b84-58-136-253-186.ngrok-free.app/callback-login"
+LINE_REDIRECT_URI = "https://px.racha.infy.uk/callback-login"
 LINE_ACCESS_TOKEN = "WaYSIv7uIgRWmwW0GEOJRbzhXHEVd3hG4MoVP9bsYImKRY/fJwj9Huwf41c1eTCnGVvkZcKSz7UD1FdXAuc9vniv6ZDFcvnO14Cb3dImIO6OHCFMHE/D67E43kyzExutIIvkyU/KlbyVcZrsFeKV/gdB04t89/1O/w1cDnyilFU="
 LINE_AUTH_URL = "https://access.line.me/oauth2/v2.1/authorize"
 LINE_TOKEN_URL = "https://api.line.me/oauth2/v2.1/token"
