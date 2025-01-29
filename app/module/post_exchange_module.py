@@ -40,7 +40,7 @@ class PostExchange():
         
         gg = list(filter(lambda x: x.id == user_id and x.date == '29 ม.ค. 6ค', data_px))
         
-        return f'รายงานยอด px\nประจำวันที่ {gg[0].date}\nยอด {gg[0].amount} บาท'
+        return f'รายงานยอด post exchange\nประจำวันที่ {gg[0].date}\nยอด {gg[0].amount} บาท'
 
     def create_user_post_exchange(self):
         creds = Credentials.from_authorized_user_file("token.json", SCOPES)
