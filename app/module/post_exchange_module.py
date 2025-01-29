@@ -38,7 +38,7 @@ class PostExchange():
                 date = date_list[index]
                 data_px.append(GetDataGoogleModel().to_dict(id, date, amount, total_amount))
         
-        gg = list(filter(lambda x: x.id == user_id and x.date == '29 ม.ค. 68', data_px))
+        gg = list(filter(lambda x: x.id == user_id, data_px))
         
         return f'รายงานยอด post exchange\nประจำวันที่ {gg[0].date}\nยอด {gg[0].amount} บาท'
 
