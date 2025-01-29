@@ -20,8 +20,9 @@ jobs:
       - name: Set up SSH agent
         uses: webfactory/ssh-agent@v0.7.0
         with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          - name: Deploy to Ubuntu Server
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to Ubuntu Server
         run: |
           ssh -i "key.pem" ubuntu@ec2-3-104-64-155.ap-southeast-2.compute.amazonaws.com << EOF
             echo "Connected to the Ubuntu server";
