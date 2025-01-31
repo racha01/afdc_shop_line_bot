@@ -46,15 +46,16 @@ class PostExchange():
         creds = Credentials.from_authorized_user_file("token.json", SCOPES)
     
         spreadsheet_id = "1Q3w-UW3jlXMKMgNaFjdrLVV2PPAuWf-DJ9dZjxuX81A"
-        range_name = "users!A4:C6"
+        range_name = "users"
         value_input_option = "USER_ENTERED"
         
         service = build("sheets", "v4", credentials=creds)
         sheet = service.spreadsheets()
         values = [
-            ["Name", "Age", "City"],
-            ["John", 30, "New York"],
-            ["Jane", 25, "Los Angeles"],
+            ["ยศ", "ผลัด", "ชื่อ", "6 ก.พ. 68", "6 ก.พ. 68", "7 ก.พ. 68", "8 ก.พ. 68", "รวม"],
+            ["พลฯ", "1/68", "รชานนท์ ก."],
+            ["ส.ต.", "", "ยุทธนา ม."],
+            ["จ.ส.อ.", "", "ฉัตรพร ป."]
         ]
 
         body = {"values": values}
